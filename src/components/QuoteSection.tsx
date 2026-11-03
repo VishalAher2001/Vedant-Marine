@@ -2,6 +2,7 @@ import { useState, type FormEvent, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Send } from "lucide-react";
 import { CONTACT, SERVICES } from "../lib/content";
+import { createMailtoHref } from "../lib/security";
 import { ClipImage, Eyebrow, MaskLines } from "./ui";
 
 type FormState = {
@@ -82,9 +83,7 @@ export default function QuoteSection({
       "Shipment details:",
       form.details,
     ].join("\n");
-    window.location.href = `mailto:${CONTACT.emails[0]}?cc=${CONTACT.emails[1]}&subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = createMailtoHref(CONTACT.emails[0], subject, body);
     setSent(true);
   };
 

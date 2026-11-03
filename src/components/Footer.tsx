@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
 import { CONTACT, LOGO_URL, NAV_LINKS, SERVICES } from "../lib/content";
+import { getExternalLinkProps } from "../lib/security";
 
 export default function Footer() {
   return (
@@ -19,8 +20,7 @@ export default function Footer() {
             <div className="mt-8 flex items-center gap-3">
               <a
                 href={`https://wa.me/${CONTACT.phoneIndiaTel.replace("+", "")}`}
-                target="_blank"
-                rel="noreferrer"
+                {...getExternalLinkProps()}
                 aria-label="WhatsApp us"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition-all duration-500 hover:border-signal hover:bg-signal hover:text-white"
               >
