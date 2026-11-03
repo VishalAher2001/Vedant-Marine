@@ -96,7 +96,7 @@ export default function QuoteSection({
 
     if (!serviceId || !templateId || !publicKey) {
       setError(
-        "Email service is not configured. Please contact our team directly.",
+        "Email service settings are missing from this build. Locally, restart the dev server after setting the VITE_EMAILJS variables. On the live site, add all three variables in your hosting build settings and redeploy. Please contact our team directly in the meantime.",
       );
       return;
     }
