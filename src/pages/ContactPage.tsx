@@ -32,7 +32,10 @@ export default function ContactPage() {
                 {CONTACT.emails.map((e) => (
                   <li key={e} className="flex items-center gap-3">
                     <Mail size={16} className="text-signal" />
-                    <a href={`mailto:${e}`} className="link-underline text-[16px] font-medium">
+                    <a
+                      href={`mailto:${e}`}
+                      className="link-underline text-[16px] font-medium"
+                    >
                       {e}
                     </a>
                   </li>
@@ -44,14 +47,22 @@ export default function ContactPage() {
               <ul className="mt-5 space-y-3">
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-signal" />
-                  <a href={`tel:${CONTACT.phoneIndiaTel}`} className="link-underline text-[16px] font-medium">
-                    {CONTACT.phoneIndia} <span className="text-graphite/50">(India)</span>
+                  <a
+                    href={`tel:${CONTACT.phoneIndiaTel}`}
+                    className="link-underline text-[16px] font-medium"
+                  >
+                    {CONTACT.phoneIndia}{" "}
+                    <span className="text-graphite/50">(India)</span>
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-signal" />
-                  <a href={`tel:${CONTACT.phoneUAETel}`} className="link-underline text-[16px] font-medium">
-                    {CONTACT.phoneUAE} <span className="text-graphite/50">(UAE)</span>
+                  <a
+                    href={`tel:${CONTACT.phoneUAETel}`}
+                    className="link-underline text-[16px] font-medium"
+                  >
+                    {CONTACT.phoneUAE}{" "}
+                    <span className="text-graphite/50">(UAE)</span>
                   </a>
                 </li>
               </ul>
@@ -69,10 +80,16 @@ export default function ContactPage() {
               <div className="border-t border-graphite/15 pt-6">
                 <Eyebrow>{o.country} office</Eyebrow>
                 <p className="mt-5 flex items-start gap-3 font-heading text-2xl font-semibold tracking-tight">
-                  <MapPin size={20} className="mt-1 shrink-0 text-signal" /> {o.city}
+                  <MapPin size={20} className="mt-1 shrink-0 text-signal" />{" "}
+                  {o.city}
                 </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-graphite/70">{o.address}</p>
-                <a href={`tel:${o.phone.replace(/[^+\d]/g, "")}`} className="link-underline mt-4 inline-block text-[15px] font-medium">
+                <p className="mt-4 text-[15px] leading-relaxed text-graphite/70">
+                  {o.address}
+                </p>
+                <a
+                  href={`tel:${o.phone.replace(/[^+\d]/g, "")}`}
+                  className="link-underline mt-4 inline-block text-[15px] font-medium"
+                >
                   {o.phone}
                 </a>
               </div>
