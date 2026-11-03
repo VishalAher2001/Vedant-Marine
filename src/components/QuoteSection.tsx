@@ -64,8 +64,8 @@ export default function QuoteSection({
 }) {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const update = (key: keyof FormState) => (e: { target: { value: string } }) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -90,13 +90,24 @@ export default function QuoteSection({
       return;
     }
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setError(
+        "Email service is not configured. Please contact our team directly.",
+      );
+      return;
+    }
+
     setError("");
     setSending(true);
 
     try {
       await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        serviceId,
+        templateId,
         {
           name: form.name,
           company: form.company,
@@ -106,16 +117,20 @@ export default function QuoteSection({
           origin: form.origin,
           destination: form.destination,
           details: form.details,
+          reply_to: form.email,
         },
         {
-          publicKey: "YOUR_PUBLIC_KEY",
+          publicKey,
         },
       );
 
       setSent(true);
+      setForm(EMPTY);
     } catch (err) {
-      console.error("EmailJS Error:", err);
-      setError("Unable to send enquiry. Please try again.");
+      console.error("Email sending failed:", err);
+      setError(
+        "Unable to send your enquiry right now. Please try again or contact our team directly.",
+      );
     } finally {
       setSending(false);
     }
@@ -190,15 +205,17 @@ export default function QuoteSection({
                   exit={{ opacity: 0 }}
                   className="flex min-h-[460px] flex-col justify-center"
                 >
-                  <p className="eyebrow text-signal">Enquiry sent</p>
+                  <p className="eyebrow text-signal">
+                    Enquiry successfully sent
+                  </p>
 
                   <h3 className="mt-5 font-heading text-3xl font-semibold tracking-tight">
-                    Thank you — your enquiry has been sent successfully.
+                    Thank you for your enquiry.
                   </h3>
 
                   <p className="mt-5 max-w-md text-[15px] leading-relaxed text-graphite/70">
-                    Our team will contact you shortly regarding your shipment.
-                    You can also reach us directly on{" "}
+                    Your enquiry has been submitted successfully. Our team will
+                    contact you shortly. You can also reach us directly on{" "}
                     <a
                       href={`tel:${CONTACT.phoneIndiaTel}`}
                       className="font-semibold text-navy underline underline-offset-4"
@@ -224,7 +241,6 @@ export default function QuoteSection({
                 <motion.form
                   key="form"
                   onSubmit={submit}
-                  noValidate
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -334,7 +350,10 @@ export default function QuoteSection({
                   </Field>
 
                   {error && (
-                    <p className="text-sm text-red-700 sm:col-span-2">
+                    <p
+                      role="alert"
+                      className="text-sm text-red-700 sm:col-span-2"
+                    >
                       {error}
                     </p>
                   )}
@@ -347,7 +366,7 @@ export default function QuoteSection({
                     <button
                       type="submit"
                       disabled={sending}
-                      className="group inline-flex items-center gap-3 rounded-full bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors duration-500 hover:bg-signal disabled:cursor-not-allowed disabled:opacity-60"
+                      className="group inline-flex items-center gap-3 rounded-full bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors duration-500 hover:bg-signal disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {sending ? "Sending..." : "Send enquiry"}
 

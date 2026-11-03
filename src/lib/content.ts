@@ -19,7 +19,7 @@ export const CONTACT = {
   phoneIndiaTel: "+919769201823",
   phoneUAE: "+971 56 359 2427",
   phoneUAETel: "+971563592427",
-  emails: ["mahesh@vedantgroup.org", "mahesh@vmscontainerline.ae"],
+  emails: ["vishalaher9022@gmail.com", "mahesh@vmscontainerline.ae"],
   hours: "Mon – Sat · 10am to 7pm",
   offices: [
     {
