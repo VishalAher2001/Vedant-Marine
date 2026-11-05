@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent, type SVGProps } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -7,6 +7,22 @@ import { CONTACT, LOGO_URL, NAV_LINKS } from "../lib/content";
 const scrollToId = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
+
+function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M6.94 8.47a1.64 1.64 0 1 1 0-3.28 1.64 1.64 0 0 1 0 3.28ZM5.55 9.9h2.78v8.18H5.55Zm4.53 0h2.67v1.12h.04c.37-.7 1.28-1.44 2.64-1.44 2.82 0 3.35 1.85 3.35 4.26v4.24h-2.78v-3.97c0-1-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.19v3.95H10.08Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm10.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,6 +65,11 @@ export default function Navbar() {
     return pathname.startsWith(to);
   };
 
+  const socialLinks = [
+    { label: "LinkedIn", href: "https://www.linkedin.com", icon: LinkedInIcon },
+    { label: "Instagram", href: "https://www.instagram.com", icon: InstagramIcon },
+  ];
+
   const onDark = !scrolled && !open;
 
   return (
@@ -82,7 +103,21 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-2 lg:flex">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
+                >
+                  <Icon className="h-[15px] w-[15px]" />
+                </a>
+              ))}
+            </div>
             <Link
               to="/contact"
               className="hidden rounded-full bg-signal px-6 py-3 text-[13px] font-semibold tracking-wide text-white transition-colors duration-500 hover:bg-white hover:text-navy lg:inline-flex"
@@ -152,6 +187,20 @@ export default function Navbar() {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="space-y-4 border-t border-white/10 px-8 py-8 text-sm text-white/70"
             >
+              <div className="flex items-center gap-3">
+                {socialLinks.map(({ label, href, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
+                  >
+                    <Icon className="h-[15px] w-[15px]" />
+                  </a>
+                ))}
+              </div>
               <Link
                 to="/contact"
                 className="inline-flex rounded-full bg-signal px-6 py-3 font-semibold text-white"
