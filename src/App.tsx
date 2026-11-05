@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { HashRouter, Link, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -67,8 +67,8 @@ function AppShell() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppShell />
-    </HashRouter>
+    </BrowserRouter>
   );
 }

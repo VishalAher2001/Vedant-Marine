@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "../../lib/gsap";
 import { IMG } from "../../lib/content";
-import { Btn, Eyebrow, MaskLines } from "../ui";
+import { Btn, Eyebrow } from "../ui";
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -82,13 +82,10 @@ export default function Hero() {
           <Eyebrow className="text-white/80">Global Maritime &amp; Logistics Solutions</Eyebrow>
         </div>
 
-        <MaskLines
-          as="h1"
-          lines={["Moving Global Trade.", "Connecting Possibilities."]}
-          start="top 100%"
-          className="display mt-8 text-[clamp(3.1rem,8.2vw,8.4rem)] text-white"
-          lineClassName="pb-[0.04em]"
-        />
+        <h1 className="display mt-8 text-[clamp(3.1rem,8.2vw,8.4rem)] text-white">
+          <span className="block">Moving Global Trade.</span>
+          <span className="block">Connecting Possibilities.</span>
+        </h1>
 
         <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-md text-[17px] leading-relaxed text-white/80 lg:text-lg">
