@@ -8,6 +8,7 @@ import ServicesPage from "./pages/ServicesPage";
 import ServicePage from "./pages/ServicePage";
 import CertificationsPage from "./pages/CertificationsPage";
 import ContactPage from "./pages/ContactPage";
+import WhyVedantPage from "./pages/WhyVedantPage";
 import { ScrollTrigger } from "./lib/gsap";
 import { useSeo } from "./lib/seo";
 
@@ -53,6 +54,7 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/why-vedant" element={<WhyVedantPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/certifications" element={<CertificationsPage />} />

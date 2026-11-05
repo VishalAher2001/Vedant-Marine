@@ -43,6 +43,7 @@ export const NAV_LINKS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
+  { label: "Why Choose Us", to: "/why-vedant" },
   { label: "Global Network", to: "/#global-network", hash: "global-network" },
   { label: "Certifications", to: "/certifications" },
   { label: "Contact", to: "/contact" },
