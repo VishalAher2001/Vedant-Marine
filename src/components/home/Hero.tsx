@@ -114,8 +114,8 @@ export default function Hero() {
         </div>
 
         <h1 className="display mt-8 text-[clamp(3.1rem,8.2vw,8.4rem)] text-white">
-          <span className="block">Connecting Oceans.</span>
-          <span className="block">Empowering Global Commerce.</span>
+          <span className="block">Maritime Excellence, Worldwide</span>
+          {/* <span className="block">Empowering Global Commerce.</span> */}
         </h1>
 
         <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
