@@ -112,9 +112,9 @@ export default function Navbar() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
                 >
-                  <Icon className="h-[15px] w-[15px]" />
+                  <Icon className="h-5 w-5 shrink-0" />
                 </a>
               ))}
             </div>
@@ -195,9 +195,9 @@ export default function Navbar() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/10"
                   >
-                    <Icon className="h-[15px] w-[15px]" />
+                    <Icon className="h-5 w-5 shrink-0" />
                   </a>
                 ))}
               </div>
